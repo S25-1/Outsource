@@ -37,13 +37,15 @@
     }
 
     function markiePerkie() {
+        /* API KEY FOR GOOGLE MAPS */
+        var API_KEY = 'secret_string';
 
         var address = document.getElementById('inputValue').value;
 
         $.post(
             "https://maps.googleapis.com/maps/api/geocode/json?address=" +
             address +
-            "&sensor=false&key=AIzaSyBlP8u8bXlEVooKQSz6P1fLvQMEFpoNPCc",
+            "&sensor=false&key="+ API_KEY,
             function(data) {
                 //console.log(data.results[0].geometry.location);
                 vals = data.results[0].geometry.location;
