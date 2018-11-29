@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
 namespace OutsourceGoogleMaps.Models
 {
     public class AdressViewModel
     {
-        public string Adress { get; set; }
+        public string Address { get; set; }
+        public static string Lat { get; set; }
+        public string Long { get; set; }
     }
 }
