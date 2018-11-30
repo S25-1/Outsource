@@ -5,6 +5,6 @@ namespace OutsourceGoogleMaps.Models
     {
         public string Address { get; set; }
         public static string Lat { get; set; }
-        public string Long { get; set; }
+        public static string Long { get; set; }
     }
 }
