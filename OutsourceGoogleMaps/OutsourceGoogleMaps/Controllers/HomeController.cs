@@ -26,23 +26,24 @@ namespace OutsourceGoogleMaps.Controllers
         public ActionResult Maps(AdressViewModel avm)
         {
             // Hier maak je de uri aan waar je een request naar wil sturen.
-            // VERGEET NIET JE KEY IN TE VULLEN ONDER "YOURKEY"
-            string requestUri = string.Format("https://maps.googleapis.com/maps/api/geocode/xml?address={0}&sensor=false&key=YOURKEY", Uri.EscapeDataString(avm.Address));
+            // VERGEET NIET JE KEY IN TE VULLEN ONDER "APIKEY"
+            string APIKEY = null;
+            string requestUri = string.Format($"https://maps.googleapis.com/maps/api/geocode/xml?address={0}&sensor=false&key={APIKEY}", Uri.EscapeDataString(avm.Address));
 
-            // Hier doen we de request en vangen we een json object terug
+            // Hier doen we de request en vangen we een XML object terug
 
             WebRequest request = WebRequest.Create(requestUri);
             WebResponse response = request.GetResponse();
             XDocument xdoc = XDocument.Load(response.GetResponseStream());
 
 
-            // hiermee halen we de coordinaten terug uit het json object
+            // Hiermee halen we de coördinaten terug uit het XML object
             XElement result = xdoc.Element("GeocodeResponse").Element("result");
             XElement locationElement = result.Element("geometry").Element("location");
             XElement lat = locationElement.Element("lat");
             XElement lng = locationElement.Element("lng");
 
-            //hiermee wilde ik de coordinaten teruggeven alleen dit ging niet helemaal goed
+            //hiermee wilde ik de coördinaten teruggeven alleen dit ging niet helemaal goed
             AdressViewModel.Lat = (string) lat;
             AdressViewModel.Long = (string) lng;
 

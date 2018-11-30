@@ -14,7 +14,7 @@
     var marker;
     function myMap() {
 
-        // Hiermee maken we de map aan..
+        // Hiermee maken we de map aan.
         var mapProp = {
             center: new google.maps.LatLng(lat, long),
             zoom: 5,
@@ -29,12 +29,12 @@
 
         marker.setMap(map);
 
-        // Hiermee maken we het infowindowtje aan hier kan je de informatie die je weergeeft veranderen.
+        // Hiermee maken we een info window aan. Hier kan je de informatie die je weergeeft veranderen.
         var infowindow = new google.maps.InfoWindow({
             content: CompanyName
         });
 
-        //hier maak je het event aan waarmee je de zoom op de marker krijgt.
+        // Hier maak je het event aan waarmee je de zoom op de marker krijgt.
         google.maps.event.addListener(marker, 'click', function () {
             var pos = map.getZoom();
             map.setZoom(5);
@@ -45,11 +45,11 @@
     }
 
     function SetCustomMarker() {
-        /* API KEY FOR GOOGLE MAPS */
-        var API_KEY = 'secret_string';
-        // Hiermee Halen we de adress op uit het input veld
+        /* API KEY VOOR GOOGLE MAPS */
+        var API_KEY = null;
+        // Hiermee Halen we de adres op uit het input veld
         var address = document.getElementById('inputValue').value;
-        // Hiermee zetten we een andere marker op het gezochte adress.
+        // Hiermee zetten we een andere marker op het gezochte adres.
         // Eerst doen we een call naar de google api voor de coordinaten.
         // Daarnaa zetten we een marker op de gekregen coordinaten.
         $.post(
